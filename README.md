@@ -95,11 +95,11 @@ Step 6. Open your favorite text editor (such as [Visual Studio Code](https://cod
 
 I recommend install the following Visual Studio Code extensions:
 
-dbaeumer.vscode-eslint
-mkaufman.htmlhint
-DavidAnson.vscode-markdownlint
-glen-84.sass-lint
-robertohuertasm.vscode-icons
+- dbaeumer.vscode-eslint
+- mkaufman.htmlhint
+- DavidAnson.vscode-markdownlint
+- glen-84.sass-lint
+- robertohuertasm.vscode-icons
 
 ### NPM Scripts Command Reference
 
