@@ -1,4 +1,4 @@
-# Welcome to the Front-End Boot Camp!
+# Welcome to the Front-End Boot Camp
 
 ## Instructor
 
@@ -74,44 +74,32 @@ It will take a few minutes for this command to complete. If you have connection 
 This set has been completed successfully when you receive the following message:
 
 ```bash
-web server running on port 3000
-please do not close this terminal window
-please use a new terminal window to run additional commands
+[1] Child html-webpack-plugin for "index.html":
+[1]     chunk    {0} index.html 541 kB [entry] [rendered]
+[1]         [0] ./~/lodash/lodash.js 540 kB {0} [built]
+[1]         [1] ./~/html-webpack-plugin/lib/loader.js!./src/index.html 607 bytes {0} [built]
+[1]         [2] (webpack)/buildin/global.js 509 bytes {0} [built]
+[1]         [3] (webpack)/buildin/module.js 517 bytes {0} [built]
+[1] webpack: Compiled successfully.
 ```
 
 This terminal window is now running the web server, a second terminal window will need to be opened to run additional terminal commands.
 
 Step 5. Open a web browser, and navigate to [http://localhost:3000](http://localhost:3000).  The starter web application should load and be usable.
 
-#### To Modify the Web Application
-
-Step 6. Open a new terminal window (do not use the same terminal window as the web server), change to the project folder.
-
-Step 7. From the terminal, run the following command:
-
-```bash
-npm run webpack
-```
-
 Note: This command will run, and then wait for file changes to process updated source code from the **src** folder. Webpack does **NOT** exit and return to a terminal prompt. Please do not close this terminal window.
 
-Step 8. Open your favorite text editor (such as [Atom](https://atom.io/) or [Visual Studio Code](https://code.visualstudio.com)), and modify the files in the **src/www** folder. When file changes are saved, **webpack** will automatically transpile and bundle the application code and assets, and deploy it to the **dist** folder. To see the changes, reload your web browser.
+#### To Modify the Web Application
 
-Visual Studio Code supports JSX out of the box. Atom requires the **react** package to be installed. To install it from the menu bar, go to Packages -> Settings View -> Install Packages/Themes. Search for **react**, then click **Install** (you may need to scroll down the search results to find the package). Sometimes Atom will not be able to download the package because of proxy settings. To resolve this run the following commands from a terminal window, replacing the localhost URL with your proxy URL setting:
+Step 6. Open your favorite text editor (such as [Visual Studio Code](https://code.visualstudio.com)), and modify the files in the **src** folder. When file changes are saved, **webpack** will automatically transpile and bundle the application code and assets, and load it into the memory of the web server. To see the changes, reload your web browser (live reload is enabled so reloading will probably occur automatically).
 
-```bash
-apm config set proxy "http://localhost:8080"
+I recommend install the following Visual Studio Code extensions:
 
-apm config set https_proxy "http://localhost:8080"
-
-apm config set strict-ssl false
-```
-
-Restart Atom, then re-attempt to install the **react** package again.
-
-JavaScript & HTML linting support can be added by installing the **linter**, **linter-htmlhint**, and **linter-eslint** packages.
-
-While other editors support JSX and other linting features (such as IntelliJ or WebStorm), I only support Visual Studio Code and Atom in class.
+dbaeumer.vscode-eslint
+mkaufman.htmlhint
+DavidAnson.vscode-markdownlint
+glen-84.sass-lint
+robertohuertasm.vscode-icons
 
 ### NPM Scripts Command Reference
 
@@ -122,8 +110,6 @@ From a terminal, in the root project folder (where the **package.json** file exi
 - **npm run build** - removes the dist folder, builds and deploys the server app, and the web app
 - **npm run webpack** - runs webpack in watch mode so web app file changes are automatically processed, and deployed to the **dist/www** folder
 - **npm run webpack-once** - runs webpack once to process web app files, and deploys them to the **dist/www** folder
-- **npm run server** - builds the server application, and deploys it to the **dist** folder
-- **npm run update-schema** - updates the GraphQL schema for RelayQL
 
 ### Useful Resources
 
