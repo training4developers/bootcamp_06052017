@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import 'bootstrap-loader';
-import '../scss/styles.scss';
+//import 'bootstrap-loader';
+//import '../scss/styles.scss';
 
 class HelloWorld extends React.Component {
 

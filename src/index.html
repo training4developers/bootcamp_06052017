@@ -1,99 +1,51 @@
 <!DOCTYPE html>
 
-<html lang="en" dir="ltr">
+<html lang="en" dir="rtl">
 
 	<head>
         <meta charset="utf-8">
 		<title>React + Redux Starter Application</title>
         <link rel="icon" href="data:,">
+        <style>
+
+            body {
+                margin:0;
+                padding:0;
+            }
+
+            #container {
+
+                margin:0;
+                padding:0;
+                border: 2px solid red;
+ 
+                display: flex;
+                flex-direction: row-reverse;
+            }
+
+            #container > div {
+
+                margin:0;
+                padding:5px;
+                border: 2px solid blue;
+
+            }
+
+        </style>
     </head>
 
 	<body>
-
-        <h1>Some header</h1>
-
-        <p>Some text!</p>
-
-        <ul>
-            <li>Phillipines</li>
-            <li>Iran</li>
-            <li>United States</li>
-            <li>India</li>
-            <li>Sri Lanka</li>
-            <li>China</li>
-        </ul>
-
-        <img src="images/intuit.png" alt="Intuit Logo">
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Capital City</th>
-                    <th>National Colors</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sri Lanka</td>
-                    <td>Colombo</td>
-                    <td>
-                        <ul>
-                            <li>red</li>
-                            <li>yellow</li>
-                            <li>green</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Islamic Republic of Iran</td>
-                    <td>Tehran</td>
-                    <td>
-                        <ul>
-                            <li>red</li>
-                            <li>white</li>
-                            <li>green</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Republic of the Philippines</td>
-                    <td>Manila</td>
-                    <td>
-                        <ul>
-                            <li>blue</li>
-                            <li>yellow</li>
-                            <li>red</li>
-                            <li>white</li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot id="this is cool">
-            </tfoot>
-        </table>
-
-        <form id="some-form">
-
-            <div>
-                <label for="first-name-input">First Name</label>
-                <input type="text" name="firstName" id="first-name-input" value="">
-            </div>
-
-            <input type="radio" name="satisfactionLevel" id="satis-level-input-1" value="very">
-            <input type="radio" name="satisfactionLevel" id="satis-level-input-2" value="a little">
-            <input type="radio" name="satisfactionLevel" id="satis-level-input-3" value="not satisfied">
-            <input type="radio" name="satisfactionLevel" id="satis-level-input-4" value="worst ever">
-
-            <textarea id="comments-textarea" name="comments">Initial Data</textarea>
-
-            <select>
-                <option value="bmwz4">BMW Z4</option>
-                <option value="audia4">Audi A4</option>
-                <option value="teslas">Tesla S</option>
-                <option value="porche911">Porche 911</option>
-            </select>
-        </form>
+        
+        <div id="container">
+            <div>A</div>
+            <div>B</div>
+            <div>C</div>
+            <div>D</div>
+            <div>E</div>
+            <div>F</div>
+            <div>G</div>
+            <div>H</div>
+        </div>
 
 	</body>
 
