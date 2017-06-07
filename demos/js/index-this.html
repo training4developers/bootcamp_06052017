@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            function doIt(a,b,c) {
+                console.log(this);
+                console.log(a,b,c);
+            }
+
+            doIt();
+
+            window.doIt();
+
+            var o = {
+                id: 2,
+                doIt: doIt
+            };
+
+            o.doIt();
+
+            // console.log(doIt === o.doIt);
+
+            // doIt.call({ id: 4 }, 1,2,3);
+            // doIt.apply({ id: 5 }, [1,2,3]);
+
+            // var fn = doIt.bind({ id: 6 });
+
+            // fn.call({ id: 7 });
+
+            // function bindFn(fn, valueOfThis) {
+            
+            //     return function(...params) {
+            //         fn.call(valueOfThis, ...params);
+            //     };
+    
+            // }
+
+            //var fn2 = o.doIt.bind(o);
+
+
+            setTimeout(function() {
+                o.doIt();
+            }, 2000);
+
+
+
+
+
+        </script>
+	</body>
+
+</html>

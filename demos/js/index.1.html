@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            function outer() {
+
+                console.log(this);
+
+                // var that = this;
+            
+                // function inner() {
+                //     console.log(that);
+                // }
+
+                const inner = () => {
+                    console.log(this);
+                };
+    
+                inner();
+            }
+
+            var p = {
+                id: 234,
+                outer: outer
+            };
+
+            p.outer();
+
+
+        </script>
+	</body>
+
+</html>
