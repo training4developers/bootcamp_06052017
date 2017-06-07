@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            function Person(fn, ln) {
+                this.fn = fn;
+                this.ln = ln;
+            }
+
+            Person.prototype.getFullName = function() {
+                console.log(this);
+                return this.fn + ' ' + this.ln;
+            };
+
+            function Student(studentId, fn, ln) {
+                this._super(fn, ln);
+                this.studentId = studentId;
+            }
+
+            Student.prototype = Object.create(Person.prototype);
+            Student.prototype.constructor = Student;
+            Student.prototype._super = Person;
+
+            Student.prototype.getRecordInfo = function() {
+                return this.studentId + ' ' + this.ln + ', ' + this.fn;
+            };
+
+            const s1 = new Student(1, 'Jeff', 'Jing');
+            const s2 = new Student(2, 'Bhagirath', 'Vaghela');
+
+            console.log(s1.getFullName());
+            console.log(s1.getRecordInfo());
+
+            console.log(s1.getFullName === s2.getFullName);
+
+
+
+
+            // const p = new Person('Bat', 'man');
+            // console.log(p.getFullName());
+
+            // const p2 = new Person('Wonder', 'Woman');
+            // console.log(p2.getFullName());
+
+            // console.log(p.getFullName === p2.getFullName);
+
+
+            // console.log(p);
+            // console.log(p2);
+
+            const car = { };
+
+            // car.make = 'Tesla';
+
+            Object.defineProperty(car, 'make', {
+                configurable: false,
+                enumerable: true,
+                // value: 'Tesla',
+                // writable: false
+                get: function() {
+                    console.log('getting make...');
+                    return this._make;
+                },
+                set: function(value) {
+                    console.log('setting make...');
+                    this._make = value;
+                }
+            });
+
+            Object.defineProperty(car, 'make', {
+                configurable: false,
+                enumerable: true,
+                value: 'Tesla',
+                writable: false,
+            });            
+
+            car.make = 'Tesla';
+
+            console.log(car.make);
+
+        </script>
+	</body>
+
+</html>
