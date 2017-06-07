@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            // var nums = new Array();
+            // console.log(nums);
+
+            // var nums2 = new Array(10);
+            // console.log(nums2);
+
+            // var nums3 = new Array(10,11);
+            // console.log(nums3);
+
+            const nums = [1,2,3,4,5,6,7,8,9];
+            // console.log(nums);
+            // let newNums = nums.concat(42);
+            // console.log(nums);
+            // console.log(newNums);
+            // console.log(nums === newNums);
+
+            // newNums = newNums.slice(1);
+            // console.log(newNums);
+
+            // newNums.concat().sort();
+
+            console.log( nums.filter(num => num > 4) );
+
+            console.log( nums.map(num => num ** 2) );
+
+            console.log( nums.reduce( (prev, next) => prev * next ) );
+
+            const y = [ 1, true, { id: 2 }, function() { }, 'this is crazy...' ];
+            console.log(y);
+
+            console.log(y["2"]);
+            console.log(y[2]);
+
+            //nums.unshift(42);
+            //console.log(nums);
+            //nums.shift();
+            //console.log(nums);
+            //nums.pop();
+            //console.log(nums);
+
+
+        </script>
+	</body>
+
+</html>
