@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { ToolHeader } from './tool-header.component';
+
 export class ColorTool extends React.Component {
 
     constructor(props) {
@@ -31,14 +33,13 @@ export class ColorTool extends React.Component {
 
     render() {
         return <div>
-            <h1>{this.props.headerText}</h1>
+            <ToolHeader headerText="Color Tool"></ToolHeader>
             <ul>
                 {this.state.colorList.map( color => <li>{color}</li> )}
             </ul>
             <form>
                 <label htmlFor="new-color-input">New Color</label>
-                <input type="text" id="new-color-input"
-                    name="newColor"
+                <input type="text" id="new-color-input" name="newColor"
                     value={this.state.newColor} onChange={this.onChange} />
                 <button type="button" onClick={this.onClick}>Add Color</button>
             </form>
