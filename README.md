@@ -30,7 +30,6 @@ Breaks:
 ### Instructor's Resources
 
 - [React Lab](https://github.com/Microsoft/TechnicalCommunityContent/tree/master/Web%20Frameworks/React/Session%202%20-%20Hands%20On)
-
 - [DevelopIntelligence](http://www.developintelligence.com/)
 - [Eric's Blog](http://t4d.io/)
 - [WintellectNOW](https://www.wintellectnow.com/Home/Instructor?instructorId=EricGreene) - Special Offer Code: GREENE-2016
