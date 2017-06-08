@@ -4,11 +4,9 @@ export class ColorTool extends React.Component {
 
     render() {
         return <div>
-            <h1>Color Tool</h1>
+            <h1>{this.props.headerText}</h1>
             <ul>
-                <li>red</li>
-                <li>blue</li>
-                <li>green</li>
+                {this.props.colorList.map( color => <li>{color}</li> )}
             </ul>
         </div>;
     }
