@@ -1,14 +1,10 @@
-// import * as React from 'react';
-// import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-// //import 'bootstrap-loader';
-// //import '../scss/styles.scss';
+import { ColorTool } from './components/color-tool.component';
 
-// class HelloWorld extends React.Component {
+ReactDOM.render(
+    <ColorTool />,
+    document.querySelector('main'),
+);
 
-//     render() {
-//         return <h1>Hello World!</h1>;    
-//     }
-// }
-
-// ReactDOM.render(<HelloWorld />, document.querySelector('main'));

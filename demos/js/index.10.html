@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            const p2 = (function() {
+
+                let firstName;
+                let lastName;
+
+                return {
+                    getFullName() {
+                        return firstName + ' ' + lastName;
+                    }
+                };
+
+            })();
+            
+            let firstName;
+            let lastName;
+
+            p2.getFullName = function() {
+                return firstName + ' ' + lastName;
+            };
+
+            p2.setFirstName = function(v) {
+                firstName = v;
+            }
+
+
+            const p = {
+                _firstName: 'Bob',
+                _lastName: 'Smith',
+                getFullName() {
+                    console.log(this._firstName + ' ' + this._lastName);
+                },
+            };
+
+            p.getFullName();
+
+
+
+        </script>
+	</body>
+
+</html>

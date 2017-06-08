@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            let t = { id: 2, name: 'test' };
+
+            t = Object.assign({}, t, { id: 3 });
+
+
+            class Person {
+
+                static get defaultAttributes() {
+                    return Person._defaultAttributes;
+                }
+
+                static set defaultAttributes(value) {
+                    Person._defaultAttributes = value;
+                }
+
+                static create(name) {
+                    const nameParts = name.split(' ');
+                    return new Person({
+                        firstName: nameParts[0],
+                        lastName: nameParts[1],
+                    });
+                }
+
+                constructor(attributes) {
+                    this.attributes = Object.assign({}, Person.defaultAttributes, attributes);
+                }
+
+                get firstName() {
+                    return this.attributes.firstName;
+                }
+
+                set firstName(value) {
+                    this.attributes.firstName = value;
+                }
+
+                get lastName() {
+                    return this.attributes.lastName;
+                }
+
+                set lastName(value) {
+                    this.attributes.lastName = value;
+                }
+
+                getFullName() {
+                    return this.firstName + ' ' + this.lastName;
+                }
+            }
+
+            Person._defaultAttributes = {
+                firstName: '',
+                lastName: '',
+                age: 0,
+            };
+
+            Person.defaultAttributes = {
+                firstName: 'Tim',
+                lastName: 'Johnson',
+                age: 22,
+        
+            };
+
+            var p = new Person({
+                firstName: 'Bob',
+                age: 32
+            });
+
+            console.log(p.getFullName());
+
+            console.log(Person.create('Leah Abad'));
+
+        </script>
+	</body>
+
+</html>

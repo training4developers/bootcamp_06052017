@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+	<head>
+        <meta charset="utf-8">
+		<title>React + Redux Starter Application</title>
+        <link rel="icon" href="data:,">
+    </head>
+
+	<body>
+        <script>
+
+            'use strict';
+
+            function outer() {
+
+                let t = 2;
+
+                setTimeout(function() {
+                    t = 4;
+                }, 2000);
+            
+                return function inner() {
+                    console.log(t);
+                };
+            }
+
+            var fn = outer();
+            //fn();
+
+            setTimeout(function() {
+                fn();
+            }, 3000);
+
+
+        </script>
+	</body>
+
+</html>
