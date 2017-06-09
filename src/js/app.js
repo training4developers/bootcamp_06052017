@@ -4,19 +4,9 @@ import * as ReactDOM from 'react-dom';
 import { ColorTool } from './components/color-tool.component';
 
 const colors = [
-    'green',
-    'blue',
-    'purple',
-    'pink',
-    'black',
-    'yellow',
-    'grey',
-    'red',
-    'teal',
-];
-
-const cars = [
-    { id: 1, make: 'Toyota', model: 'Camry', color:'blue', year: 2017, price: 20183 },
+    { id: 1, name: 'red', code: '#ff0000' },
+    { id: 2, name: 'blue', code: '#0000ff' },
+    { id: 3, name: 'green', code: '#00ff00' },
 ];
 
 ReactDOM.render(

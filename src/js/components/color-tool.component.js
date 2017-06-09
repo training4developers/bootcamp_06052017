@@ -1,7 +1,8 @@
 import * as React from 'react';
+import namer from 'color-namer';
 
 import { ToolHeader } from './tool-header.component';
-import { ItemList } from './item-list.component';
+import { ColorTable } from './color-table.component';
 import { ColorForm } from './color-form.component';
 
 export class ColorTool extends React.Component {
@@ -14,19 +15,35 @@ export class ColorTool extends React.Component {
         };
 
         this.addColor = this.addColor.bind(this);
+        this.removeColor = this.removeColor.bind(this);
     }
 
 
     addColor(newColor) {
         this.setState({
-            colorList: this.state.colorList.concat(newColor),
+            colorList: this.state.colorList.concat({
+                id: this.state.colorList.reduce( (p,c) => Math.max(p, c.id), 0 ) + 1,
+                name: namer(newColor).ntc[0].name,
+                code: newColor,
+            }),
+        });
+    }
+
+    removeColor(colorId) {
+
+        const colorIndex = this.state.colorList.findIndex( c => c.id === colorId );
+
+        this.setState({
+            colorList: this.state.colorList
+                .slice(0, colorIndex)
+                .concat(this.state.colorList.slice(colorIndex + 1)),
         });
     }
 
     render() {
         return <div>
             <ToolHeader headerText="Color Tool" />
-            <ItemList itemList={this.state.colorList} />
+            <ColorTable colorList={this.state.colorList} onDeleteColor={this.removeColor} />
             <ColorForm onSubmitColor={this.addColor} /> 
         </div>;
     }

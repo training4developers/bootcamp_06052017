@@ -43,6 +43,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "bootstrap": "4.0.0-alpha.5",
     "bootstrap-loader": "2.0.0-beta.20",
+    "color-namer": "^1.1.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "es6-promise": "^4.0.5",
@@ -75,15 +76,15 @@
     "webpack": "^2.3.3",
     "whatwg-fetch": "^2.0.1"
   },
-    "devServer": {
-        "contentBase": "dist",
-        "historyApiFallback": true,
-        "port": 3000,
-        "proxy": {
-            "/api": {
-                "target": "http://localhost:3010",
-                "changeOrigin": true
-            }
-        }
+  "devServer": {
+    "contentBase": "dist",
+    "historyApiFallback": true,
+    "port": 3000,
+    "proxy": {
+      "/api": {
+        "target": "http://localhost:3010",
+        "changeOrigin": true
+      }
     }
+  }
 }
