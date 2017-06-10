@@ -40,10 +40,22 @@ export class ColorTool extends React.Component {
         });
     }
 
+    saveColor = color => {
+
+        const colorIndex = this.state.colorList.findIndex( c => c.id === color.id );
+
+        this.setState({
+            colorList: this.state.colorList
+                .slice(0, colorIndex)
+                .concat(color, this.state.colorList.slice(colorIndex + 1)),
+        });        
+
+    }
+
     render() {
         return <div>
-            <ToolHeader headerText="Color Tool" />
-            <ColorTable colorList={this.state.colorList} onDeleteColor={this.removeColor} />
+            <ToolHeader />
+            <ColorTable colorList={this.state.colorList} onDeleteColor={this.removeColor} onSaveColor={this.saveColor}  />
             <ColorForm onSubmitColor={this.addColor} /> 
         </div>;
     }

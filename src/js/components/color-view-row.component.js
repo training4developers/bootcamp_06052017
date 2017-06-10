@@ -1,6 +1,19 @@
 import * as React from 'react';
 
+import { PropTypes } from 'prop-types';
+
+
 export class ColorViewRow extends React.Component {
+
+    static propTypes = {
+        color: PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
+            code: PropTypes.string,
+        }),
+        onEdit: PropTypes.func.isRequired,
+        onDelete: PropTypes.func.isRequired,
+    };
 
     constructor(props) {
         super(props);

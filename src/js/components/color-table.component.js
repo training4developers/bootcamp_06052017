@@ -26,7 +26,22 @@ export class ColorTable extends React.Component {
         this.props.onDeleteColor(colorId);
     }
 
+    saveColor = color => {
+        this.props.onSaveColor(color);
+
+        this.setState({
+            editRowId: 0,
+        });  
+    };
+
+    cancelColor = () => {
+        this.setState({
+            editRowId: 0,
+        });        
+    };
+
     render() {
+
         return <table>
             <thead>
                 <tr>
@@ -38,7 +53,7 @@ export class ColorTable extends React.Component {
             <tbody>
                 {this.props.colorList.map( color =>
                     color.id === this.state.editRowId
-                        ? <ColorEditRow color={color} />
+                        ? <ColorEditRow color={color} onSave={this.saveColor} onCancel={this.cancelColor} />
                         : <ColorViewRow color={color} onDelete={this.deleteColor} onEdit={this.editColor} />
                 )}
             </tbody>

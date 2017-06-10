@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // configure the environment object for development mode
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+// const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
 
 // configure source and distribution folder paths
 const srcFolder = 'src';
@@ -18,7 +19,7 @@ const srcFolderPath = path.join(__dirname, srcFolder);
 const jsFolderPath = path.join(srcFolderPath, 'js');
 
 // export webpack configuration
-module.exports = {
+const webpackConfig = {
 
     // root folder for entry point files
     context: jsFolderPath,    
@@ -96,7 +97,7 @@ module.exports = {
         // setup environment variables 
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(ENV),
+                'NODE_ENV': JSON.stringify(ENV),
             },
         }),
 
@@ -123,3 +124,10 @@ module.exports = {
     // other source map settings do not allow debugging in browser and vscode
     devtool: 'source-map',
 };
+
+// only minify code when in production
+if (ENV === 'production') {
+    webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+module.exports =  webpackConfig;

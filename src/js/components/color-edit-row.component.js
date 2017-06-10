@@ -12,7 +12,20 @@ export class ColorEditRow extends BaseForm {
         this.state = {
             colorCode: this.props.color.code,
         };
+
     }
+
+    save = () => {
+        this.props.onSave({
+            id: this.props.color.id,
+            name: namer(this.state.colorCode).ntc[0].name,
+            code: this.state.colorCode,
+        });
+    };
+
+    cancel = () => {
+        this.props.onCancel();
+    };
 
     render() {
 
@@ -21,8 +34,8 @@ export class ColorEditRow extends BaseForm {
             <td>{namer(this.state.colorCode).ntc[0].name}</td>
             <td><input type="color" name="colorCode" value={this.state.colorCode} onChange={this.onChange} /></td>
             <td>
-                <button type="button">Save</button>
-                <button type="button">Cancel</button>
+                <button type="button" onClick={this.save}>Save</button>
+                <button type="button" onClick={this.cancel}>Cancel</button>
             </td>
         </tr>;
     }
