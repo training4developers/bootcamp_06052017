@@ -1,16 +1,42 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 
-import { ColorTool } from './components/color-tool.component';
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'add':
+            return state + action.value;
+        case 'subtract':
+            return state - action.value;
+        default:
+            return state;
+    }
+};
 
-const colors = [
-    { id: 1, name: 'red', code: '#ff0000' },
-    { id: 2, name: 'blue', code: '#0000ff' },
-    { id: 3, name: 'green', code: '#00ff00' },
-];
+const initialState = 0;
 
-ReactDOM.render(
-    <ColorTool headerText="Color Tool!" colorList={colors} />,
-    document.querySelector('main'),
-);
+const createStore = (reducerFn, initialState) => {
 
+    let state = initialState;
+    const subscribeFns = [];
+
+    return {
+        getState: () => state,
+        dispatch: action => {
+            state = reducerFn(state, action);
+            subscribeFns.forEach(cb => cb());
+        },
+        subscribe: callbackFn => subscribeFns.push(callbackFn),
+    };
+};
+
+const store = createStore(reducer, initialState);
+
+store.subscribe(() => {
+    console.log(store.getState());
+});
+
+store.dispatch({ type: 'add', value: 1 });
+store.dispatch({ type: 'subtract', value: 2 });
+store.dispatch({ type: 'add', value: 3 });
+store.dispatch({ type: 'subtract', value: 4 });
+store.dispatch({ type: 'add', value: 5 });
+
+console.log(store.getState());
