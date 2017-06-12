@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom';
 import keyMirror from 'key-mirror';
 
 import { createStore, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 const actionTypes = keyMirror({
     add: null,
@@ -115,43 +116,43 @@ const CalcApp = props => {
     </div>;
 };
 
-const connect = (mapStateToPropsFn, mapDispatchToPropsFn) => {
+// const connect = (mapStateToPropsFn, mapDispatchToPropsFn) => {
 
-    return PresentationalComponent => {
+//     return PresentationalComponent => {
 
-        return class ContainerComponent extends React.Component {
+//         return class ContainerComponent extends React.Component {
 
-            componentWillMount() {
+//             componentWillMount() {
 
-                this.presentationalComponentProps =
-                    mapDispatchToPropsFn(this.props.store.dispatch);
+//                 this.presentationalComponentProps =
+//                     mapDispatchToPropsFn(this.props.store.dispatch);
 
-                this.storeUnsubscribe = this.props.store.subscribe(() => {
+//                 this.storeUnsubscribe = this.props.store.subscribe(() => {
 
-                    Object.assign(
-                        this.presentationalComponentProps,
-                        mapStateToPropsFn(this.props.store.getState())
-                    );
+//                     Object.assign(
+//                         this.presentationalComponentProps,
+//                         mapStateToPropsFn(this.props.store.getState())
+//                     );
 
-                    this.forceUpdate();
+//                     this.forceUpdate();
 
-                });
+//                 });
 
-            }
+//             }
 
-            componentWillUnmount() {
-                this.storeUnsubscribe();
-            }
+//             componentWillUnmount() {
+//                 this.storeUnsubscribe();
+//             }
 
-            render() {
-                return <PresentationalComponent {...this.presentationalComponentProps} />;
-            }
+//             render() {
+//                 return <PresentationalComponent {...this.presentationalComponentProps} />;
+//             }
 
-        };
+//         };
 
-    };
+//     };
 
-};
+// };
 
 const CalcAppContainer = connect(mapStateToProps, mapDispatchToProps)(CalcApp);
 
