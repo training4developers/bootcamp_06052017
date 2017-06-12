@@ -1,9 +1,13 @@
+const actionTypes = {
+    add: 'add',
+    subtract: 'subtract',
+};
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'add':
+        case actionTypes.add:
             return state + action.value;
-        case 'subtract':
+        case actionTypes.subtract:
             return state - action.value;
         default:
             return state;
@@ -23,20 +27,52 @@ const createStore = (reducerFn, initialState) => {
             state = reducerFn(state, action);
             subscribeFns.forEach(cb => cb());
         },
-        subscribe: callbackFn => subscribeFns.push(callbackFn),
+        subscribe: callbackFn => {
+            subscribeFns.push(callbackFn);
+
+            return () => {
+                const cbIndex = subscribeFns.indexOf(callbackFn);
+                subscribeFns.splice(cbIndex, 1);
+            };
+        },
     };
 };
 
 const store = createStore(reducer, initialState);
 
-store.subscribe(() => {
+const unsubscribeStore = store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.dispatch({ type: 'add', value: 1 });
-store.dispatch({ type: 'subtract', value: 2 });
-store.dispatch({ type: 'add', value: 3 });
-store.dispatch({ type: 'subtract', value: 4 });
-store.dispatch({ type: 'add', value: 5 });
+const addActionCreator = value => ({ type: actionTypes.add, value });
+const subtractActionCreator = value => ({ type: actionTypes.subtract, value });
+
+const bindActionCreators = (actionCreators, dispatch) => {
+
+    return Object.keys(actionCreators).reduce( (actionsDispatcher, actionKey) => {
+
+        actionsDispatcher[actionKey] = (...actionParams) => {
+            dispatch(actionCreators[actionKey](...actionParams));
+        };
+
+        return actionsDispatcher;
+
+    }, {} );
+
+};
+
+const { add, subtract } = bindActionCreators({
+    add: addActionCreator,
+    subtract: subtractActionCreator,
+}, store.dispatch);
+
+
+add(1);
+subtract(2);
+add(3);
+subtract(4);
+add(5);
 
 console.log(store.getState());
+
+unsubscribeStore();
