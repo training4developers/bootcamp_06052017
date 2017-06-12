@@ -30,7 +30,7 @@ Breaks:
 ### Instructor's Resources
 
 - [React Lab](https://github.com/Microsoft/TechnicalCommunityContent/tree/master/Web%20Frameworks/React/Session%202%20-%20Hands%20On)
-- [Redux Lab] (https://github.com/Microsoft/TechnicalCommunityContent/tree/master/Web%20Frameworks/React/Session%203%20-%20Hands%20On#Exercise3)
+- [Redux Lab](https://github.com/Microsoft/TechnicalCommunityContent/tree/master/Web%20Frameworks/React/Session%203%20-%20Hands%20On)
 - [Redux Videos] (https://egghead.io/courses/getting-started-with-redux)
 - [DevelopIntelligence](http://www.developintelligence.com/)
 - [Eric's Blog](http://t4d.io/)
