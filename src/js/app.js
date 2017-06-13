@@ -11,7 +11,7 @@ import { CalcApp } from './components/calc-app.component';
 import { appStore } from './app-store';
 
 
-const mapStateToProps = state => ({ result: state });
+const mapStateToProps = ({ result, operations }) => ({ result, operations });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
     add: addActionCreator,

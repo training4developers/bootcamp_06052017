@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { OperationsTable } from './operations-table.component';
+
 export const CalcApp = props => {
 
     let operand;
@@ -17,5 +19,6 @@ export const CalcApp = props => {
             <span>Result:</span>
             {props.result}
         </div>
+        <OperationsTable operations={props.operations} />
     </div>;
 };
