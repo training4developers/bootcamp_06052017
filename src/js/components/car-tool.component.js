@@ -14,6 +14,10 @@ export class CarTool extends React.Component {
         };
     }
 
+    componentWillMount() {
+        this.props.refresh();
+    }
+
     onChange = (e) => {
 
         this.setState({
@@ -46,7 +50,7 @@ export class CarTool extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.props.cars.map(car => <tr>
+                    {this.props.cars.map(car => <tr key={car.id}>
                         <td>{car.make}</td>
                         <td>{car.model}</td>
                         <td>{car.year}</td>

@@ -1,8 +1,7 @@
 import keyMirror from 'key-mirror';
 
 export const actionTypes = keyMirror({
-    add: null,
-    subtract: null,
-    multiply: null,
-    divide: null,
+    REFRESH_REQUEST: null,
+    REFRESH_DONE: null,
+    ADD_REQUEST: null,
 });

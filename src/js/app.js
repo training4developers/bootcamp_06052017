@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { addActionCreator } from './actions/car-actions';
+import { refresh } from './actions/car-actions';
 import { CarTool } from './components/car-tool.component';
 import { carAppStore } from './car-app-store';
 
@@ -11,14 +11,21 @@ import { carAppStore } from './car-app-store';
 const mapStateToProps = ({ cars }) => ({ cars });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-    add: addActionCreator,
+    refresh,
 }, dispatch);
 
 const createContainer = connect(mapStateToProps, mapDispatchToProps);
 
 const CarToolContainer = createContainer(CarTool);
 
-ReactDOM.render(
-    <CarToolContainer store={carAppStore} />,
-    document.querySelector('main')
-);
+document.addEventListener('DOMContentLoaded', () => {
+
+    ReactDOM.render(
+        <CarToolContainer store={carAppStore} />,
+        document.querySelector('main')
+    );
+
+    // carAppStore.dispatch(refresh());
+
+});
+
