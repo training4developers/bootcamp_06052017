@@ -1,30 +1,36 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import {
-    addActionCreator, subtractActionCreator,
-    multiplyActionCreator, divideActionCreator
-} from './actions/calc-actions';
-import { CalcApp } from './components/calc-app.component';
-import { appStore } from './app-store';
+const getCurrentLocation = () => {
+    return new Promise(resolve => {
+        navigator.geolocation.getCurrentPosition(results => resolve(results));
+    });
+};
 
+getCurrentLocation().then(results => console.dir(results));
 
-const mapStateToProps = ({ result, operations }) => ({ result, operations });
+const ajaxRequest = (method, url, body) => {
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    add: addActionCreator,
-    subtract: subtractActionCreator,
-    multiply: multiplyActionCreator,
-    divide: divideActionCreator,
-}, dispatch);
+    return new Promise(resolve => {
 
-const createContainer = connect(mapStateToProps, mapDispatchToProps);
+        const xhr = new XMLHttpRequest();
 
-const CalcAppContainer = createContainer(CalcApp);
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.status === 200 && xhr.readyState === 4) {
+                resolve(JSON.parse(xhr.responseText));
+            }
+        });
 
-ReactDOM.render(
-    <CalcAppContainer store={appStore} />,
-    document.querySelector('main')
-);
+        xhr.open(method, url);
+
+        if (body) {
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(body));
+        } else {
+            xhr.send();
+        }
+
+    });
+
+};
+
+ajaxRequest('POST', 'http://localhost:3010/widgets', { name: 'New Widget' })
+    .then(results => console.dir(results));
