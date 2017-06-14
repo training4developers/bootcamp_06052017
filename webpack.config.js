@@ -51,8 +51,7 @@ const webpackConfig = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        passPerPreset: true,
-                        presets: ['react', 'latest'],
+                        presets: [ 'react' ],
                         plugins: [ 'transform-class-properties' ],
                     },
                 }],

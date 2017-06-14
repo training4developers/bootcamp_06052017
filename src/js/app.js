@@ -1,36 +1,24 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-const getCurrentLocation = () => {
-    return new Promise(resolve => {
-        navigator.geolocation.getCurrentPosition(results => resolve(results));
-    });
-};
+import { addActionCreator } from './actions/car-actions';
+import { CarTool } from './components/car-tool.component';
+import { carAppStore } from './car-app-store';
 
-getCurrentLocation().then(results => console.dir(results));
 
-const ajaxRequest = (method, url, body) => {
+const mapStateToProps = ({ cars }) => ({ cars });
 
-    return new Promise(resolve => {
+const mapDispatchToProps = dispatch => bindActionCreators({
+    add: addActionCreator,
+}, dispatch);
 
-        const xhr = new XMLHttpRequest();
+const createContainer = connect(mapStateToProps, mapDispatchToProps);
 
-        xhr.addEventListener('readystatechange', () => {
-            if (xhr.status === 200 && xhr.readyState === 4) {
-                resolve(JSON.parse(xhr.responseText));
-            }
-        });
+const CarToolContainer = createContainer(CarTool);
 
-        xhr.open(method, url);
-
-        if (body) {
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.send(JSON.stringify(body));
-        } else {
-            xhr.send();
-        }
-
-    });
-
-};
-
-ajaxRequest('POST', 'http://localhost:3010/widgets', { name: 'New Widget' })
-    .then(results => console.dir(results));
+ReactDOM.render(
+    <CarToolContainer store={carAppStore} />,
+    document.querySelector('main')
+);
