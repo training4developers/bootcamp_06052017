@@ -1,31 +1,24 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
-import { refresh } from './actions/car-actions';
-import { CarTool } from './components/car-tool.component';
-import { carAppStore } from './car-app-store';
+import { Observable } from 'rxjs';
 
+const nums = Observable.create(observer => {
 
-const mapStateToProps = ({ cars }) => ({ cars });
+    console.log('called observable');
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    refresh,
-}, dispatch);
-
-const createContainer = connect(mapStateToProps, mapDispatchToProps);
-
-const CarToolContainer = createContainer(CarTool);
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    ReactDOM.render(
-        <CarToolContainer store={carAppStore} />,
-        document.querySelector('main')
-    );
-
-    // carAppStore.dispatch(refresh());
+    let counter = 0;
+    setInterval(() => {
+        counter++;
+        observer.next(counter);
+    }, 500);
 
 });
 
+nums.map(n => n * 2).subscribe(data => {
+    console.log(1, data);
+});
+
+// setTimeout(() => {
+//     nums.subscribe(data => {
+//         console.log(2, data);
+//     });
+// }, 3000);
