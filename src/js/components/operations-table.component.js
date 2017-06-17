@@ -11,7 +11,7 @@ export class OperationsTable extends React.Component {
                 </tr>
             </thead>
             <tbody>
-                {this.props.operations.map(op => <tr>
+                {this.props.operations.map((op, i) => <tr key={i}>
                     <td>{op.name}</td>
                     <td>{op.value}</td>
                 </tr>)}

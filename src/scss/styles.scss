@@ -1,1 +1,38 @@
-h1 { color: #00f; }
+
+@import 'vars';
+
+
+
+@mixin myPadding($l, $t, $r, $b) {
+    padding: ($l / 2) $t $r $b;
+}
+
+.alert {
+    font-weight:bold;
+    @include myPadding(2px,3px,4px,5px);
+}
+
+.critical {
+    @extend .alert;
+    color: red;
+}
+
+.warning {
+    @extend .alert;
+    color: yellow;
+}
+
+.info {
+    @extend .alert;
+    color: blue;
+}
+
+
+span { color: lighten($text-color, 20%); }
+
+div {
+    > p {
+        font-weight: bold;
+
+    }
+}
